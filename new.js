@@ -1,13 +1,8 @@
 const puppeteer = require('puppeteer');
-<<<<<<< HEAD
-/* require('dotenv').config(); 
-var username = process.env.USERNAME;
-var p1 = process.env.USER_PASSWORD;  */
+require('dotenv').config()
+var username = process.env.USER_USERNAME;
+var p1 = process.env.USER_PASSWORD;  
 
-=======
-var username = env.password;
-var p1 = env.password;
->>>>>>> 1e59be71c7115e35a65d89c1fecef9973fc9e5fb
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
@@ -17,11 +12,11 @@ var p1 = env.password;
   await page.waitForSelector('#txtUsername', {
     visible: true,
   })
+  await page.type("#txtUsername", username, {delay:100})
   await page.waitForSelector('#txtPassWord', {
     visible: true,
   })
-  await page.type("#txtUsername", username, {delay:50})
-  await page.type("#txtPassWord", p1, {delay:50})
+  await page.type("#txtPassWord", p1, {delay:100})
   await page.click("#cmdStandardProceed", {delay:200});
   await page.waitForSelector("#showQuarantineBadge", {
     visible:true,
