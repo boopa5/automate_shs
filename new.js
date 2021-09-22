@@ -16,14 +16,25 @@ var p1 = "Tau628tau123!";
   await page.type("#txtUsername", username, {delay:50})
   await page.type("#txtPassWord", p1, {delay:50})
   await page.click("#cmdStandardProceed", {delay:200});
+  await page.waitForSelector("#showQuarantineBadge", {
+    visible:true,
+  })
+  const element = await page.$("#showQuarantineBadge");
+  const badgeStatus = await page.evaluate(element => element.innerText, element);
+  if(badgeStatus == "Show Badge (Clearance Status: Cleared to be On-Site)")
+    page.click("#showQuarantineBadge");
+  sleep(1000);
   await page.waitForSelector("#ctl03 > div:nth-child(6) > div > a", {
     visible: true,
   })
   await page.click("#ctl03 > div:nth-child(6) > div > a", {delay:200});
   await page.waitForSelector("#mainbody > div.container-fluid > div.header.ta-center.mb-3 > div > div.col-xs-6.ta-right > a", {
     visible: true,
-  })
-  await page.click("#mainbody > div.container-fluid > div.header.ta-center.mb-3 > div > div.col-xs-6.ta-right > a", {delay:200});
+  });
+  await page.waitForSelector("#mainbody > div.container-fluid > div.header.ta-center.mb-3 > div > div.col-xs-6.ta-right > a", {
+    visible: true,
+  });
+  await page.click("#mainbody > div.container-fluid > div.header.ta-center.mb-3 > div > div.col-xs-6.ta-right > a");
   await page.waitForSelector("#mainbody > main > form > div:nth-child(60) > fieldset > div > div:nth-child(2) > div", {
     visible: true,
   })
@@ -36,6 +47,6 @@ var p1 = "Tau628tau123!";
   await page.waitForSelector("#showQuarantineBadge",{
     visible: true,
   })
-  await page.click("#showQuarantineBadge");
+  await page.click("#showQuarantineBadge"); 
 })();
   
