@@ -13,8 +13,8 @@ var p1 = "Tau628tau123!";
   await page.waitForSelector('#txtPassWord', {
     visible: true,
   })
-  await page.type("#txtUsername", username, {delay:200})
-  await page.type("#txtPassWord", p1, {delay:200})
+  await page.type("#txtUsername", username, {delay:50})
+  await page.type("#txtPassWord", p1, {delay:50})
   await page.click("#cmdStandardProceed", {delay:200});
   await page.waitForSelector("#ctl03 > div:nth-child(6) > div > a", {
     visible: true,
