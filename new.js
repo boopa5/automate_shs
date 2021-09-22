@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
-var username ="harvardwang";
-var p1 = "Tau628tau123!";
+var username = env.password;
+var p1 = env.password;
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
